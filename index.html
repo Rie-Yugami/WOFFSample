@@ -94,7 +94,7 @@
     <div class="container">
         <!-- ユーザープロフィール情報のセクション -->
         <div class="section" id="userProfileSection">
-            <h2>##ユーザーのプロフィール情報</h2>
+            <h2>###ユーザーのプロフィール情報</h2>
             <p>woff.getProfile() メソッドでログイン中のユーザーのプロフィール情報を取得して表示しています。</p>
             <div id="userProfileInfo"></div>
             <button class="btn" id="callAPIBtn">API呼べる？</button>
@@ -190,7 +190,7 @@
             }
             let token = '';
 
-            alert("callAPI()");
+            // alert("callAPI()");
             
             axios.post(forguncyURL, forguncyLogin)
                 .then((results) => {
