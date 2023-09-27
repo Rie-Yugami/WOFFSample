@@ -94,7 +94,7 @@
     <div class="container">
         <!-- ユーザープロフィール情報のセクション -->
         <div class="section" id="userProfileSection">
-            <h2>*ユーザーのプロフィール情報</h2>
+            <h2>**ユーザーのプロフィール情報</h2>
             <p>woff.getProfile() メソッドでログイン中のユーザーのプロフィール情報を取得して表示しています。</p>
             <div id="userProfileInfo"></div>
         </div>
@@ -196,17 +196,23 @@
                     woffId: woffId
                 })
                 .then(() => {
-                    woff.getProfile().then(profile => {
-                        const profileInfoElem = document.getElementById("userProfileInfo");
-                        profileInfoElem.innerHTML = `
-                    ドメイン ID: ${profile.domainId} <br>
-                    ユーザー ID: ${profile.userId} <br>
-                    ユーザー名: ${profile.displayName}
-                `;
-                    }).catch(error => {
-                        console.error('Profile error:', error);
-                        // woff.login();
-                    });
+                    if (!woff.isLoggedIn()) {
+                     woff.login();
+                     // Verifies whether domain name and path of the specified URL
+                    } else {
+                    
+                        woff.getProfile().then(profile => {
+                            const profileInfoElem = document.getElementById("userProfileInfo");
+                            profileInfoElem.innerHTML = `
+                        ドメイン ID: ${profile.domainId} <br>
+                        ユーザー ID: ${profile.userId} <br>
+                        ユーザー名: ${profile.displayName}
+                    `;
+                        }).catch(error => {
+                            console.error('Profile error:', error);
+                            // woff.login();
+                        });
+                    }
                 })
                 .catch((err) => {
                     console.log(err.code, err.message);
