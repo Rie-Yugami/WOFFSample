@@ -94,7 +94,7 @@
     <div class="container">
         <!-- ユーザープロフィール情報のセクション -->
         <div class="section" id="userProfileSection">
-            <h2>**ユーザーのプロフィール情報</h2>
+            <h2>ユーザーのプロフィール情報</h2>
             <p>woff.getProfile() メソッドでログイン中のユーザーのプロフィール情報を取得して表示しています。</p>
             <div id="userProfileInfo"></div>
         </div>
@@ -187,7 +187,7 @@
 
         window.onload = function () {
              if (!woff.isLoggedIn()) {
-                woff.login({ redirectUri: "https://line.worksmobile.com/jp/" });
+                woff.login();
                 // Verifies whether domain name and path of the specified URL
              }
             
