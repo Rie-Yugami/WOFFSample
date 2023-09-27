@@ -96,7 +96,7 @@
     <div class="container">
         <!-- ユーザープロフィール情報のセクション -->
         <div class="section" id="userProfileSection">
-            <h2>*ユーザーのプロフィール情報</h2>
+            <h2>**ユーザーのプロフィール情報</h2>
             <p>woff.getProfile() メソッドでログイン中のユーザーのプロフィール情報を取得して表示しています。</p>
             <div id="userProfileInfo"></div>
             <button class="btn" id="callAPIBtn">API呼べる？</button>
@@ -185,38 +185,58 @@
         }
 
         function callAPI() {
-            let forguncyURL = "http://ds-forguncy.tkg.grptateyama.co.jp/InventorySystem/SSO/GetUserToken";
-            let forguncyLogin = {
-                "userName": "rie-yugami",
-                "password": "ffaRELRNdck^",
-            }
+            // let forguncyURL = "http://ds-forguncy.tkg.grptateyama.co.jp/InventorySystem/SSO/GetUserToken";
+            // let forguncyLogin = {
+            //     "userName": "rie-yugami",
+            //     "password": "ffaRELRNdck^",
+            // }
             let token = '';
 
+            let forguncyURL = "https://api.github.com/users/rie-yugami";
+
+            axios
+                .get(forguncyURL)
+                .then(getReposSuccess)
+                .catch(getReposFailure)
+            
             // alert("callAPI()");
             
-            axios.post(forguncyURL, forguncyLogin)
-                .then((results) => {
-                    console.log(res)
-                    token = String(results.data);
+            // axios.post(forguncyURL, forguncyLogin)
+            //     .then((results) => {
+            //         console.log(res)
+            //         token = String(results.data);
 
-                    alert("token: " + token);
+           //          alert("token: " + token);
                     
-                    // let msg = "登録しました。\n" + "日付: " + date + "\n開始時間: " + startTime + "\n終了時間: " + endTime + "\n訪問先: " + place
-                    // // send message
-                    // woff.sendMessage({ 'content': msg }).then(() => {
-                    //     // Success
-                    //     console.log("message sent: " + msg)
-                    //     woff.closeWindow();
-                    // }).catch((err) => {
-                    //     // Error
-                    //     console.log(err)
-                    //     window.alert(err);
-                    // });
-                })
-                .catch((err) => {
-                    console.log("error")
-                    console.log(err);
-                });
+            //         // let msg = "登録しました。\n" + "日付: " + date + "\n開始時間: " + startTime + "\n終了時間: " + endTime + "\n訪問先: " + place
+            //         // // send message
+            //         // woff.sendMessage({ 'content': msg }).then(() => {
+            //         //     // Success
+            //         //     console.log("message sent: " + msg)
+            //         //     woff.closeWindow();
+            //         // }).catch((err) => {
+            //         //     // Error
+            //         //     console.log(err)
+            //         //     window.alert(err);
+            //         // });
+            //     })
+            //     .catch((err) => {
+            //         console.log("error")
+             //        console.log(err);
+            //     });
+        }
+
+        /* 取得成功時 */
+        function getReposSuccess(response) {
+          console.log(response.data)
+          for(let repo of response.data) {
+            console.log(repo.name)
+          }
+        }
+    
+        /* 取得失敗か成功時関数でのエラー時 */
+        function getReposFailure(error) {
+          /* エラー処理 */
         }
         
         document.getElementById("exitAppBtn").addEventListener("click", function () {
