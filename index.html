@@ -186,13 +186,11 @@
         });
 
         window.onload = function () {
-            woff.ready.then(() => {
-              // woff.init が完了した後に処理を行う
-                    if (!woff.isLoggedIn()) {
+            if (!woff.isLoggedIn()) {
                         woff.login();
                         // Verifies whether domain name and path of the specified URL
-                    }
-                });
+            }
+            
             woff
                 .init({
                     woffId: woffId
