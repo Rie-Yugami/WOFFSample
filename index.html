@@ -186,10 +186,10 @@
         });
 
         window.onload = function () {
-            // if (!woff.isLoggedIn()) {
-            //             woff.login();
-            //             // Verifies whether domain name and path of the specified URL
-            // }
+             if (!woff.isLoggedIn()) {
+                woff.login();
+                // Verifies whether domain name and path of the specified URL
+             }
             
             woff
                 .init({
