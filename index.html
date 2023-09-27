@@ -94,7 +94,7 @@
     <div class="container">
         <!-- ユーザープロフィール情報のセクション -->
         <div class="section" id="userProfileSection">
-            <h2>***ユーザーのプロフィール情報</h2>
+            <h2>****ユーザーのプロフィール情報</h2>
             <p>woff.getProfile() メソッドでログイン中のユーザーのプロフィール情報を取得して表示しています。</p>
             <div id="userProfileInfo"></div>
         </div>
@@ -199,10 +199,13 @@
                     liff.ready.then(() => {
                       // liff.init()完了後に実行される処理
                       if (!woff.isLoggedIn()) {
-                         woff.login();
-                         // Verifies whether domain name and path of the specified URL
+                            // 未ログイン
+                            let result = window.confirm("LINE Loginしますか？");
+                            if(result) {
+                                 woff.login();
+                                 // Verifies whether domain name and path of the specified URL
+                            }
                         } else {
-                        
                             woff.getProfile().then(profile => {
                                 const profileInfoElem = document.getElementById("userProfileInfo");
                                 profileInfoElem.innerHTML = `
