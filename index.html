@@ -182,6 +182,39 @@
                 });
         }
 
+        function callAPI() {
+            let forguncyURL = "http://ds-forguncy.tkg.grptateyama.co.jp/InventorySystem/SSO/GetUserToken";
+            let forguncyLogin = {
+                "userName": "rie-yugami",
+                "password": "ffaRELRNdck^",
+            }
+            let token = '';
+            
+            axios.post(forguncyURL, forguncyLogin)
+                .then((results) => {
+                    console.log(res)
+                    token = String(results.data);
+
+                    let msgResult = window.confirm("token: " + token);
+                    
+                    // let msg = "登録しました。\n" + "日付: " + date + "\n開始時間: " + startTime + "\n終了時間: " + endTime + "\n訪問先: " + place
+                    // // send message
+                    // woff.sendMessage({ 'content': msg }).then(() => {
+                    //     // Success
+                    //     console.log("message sent: " + msg)
+                    //     woff.closeWindow();
+                    // }).catch((err) => {
+                    //     // Error
+                    //     console.log(err)
+                    //     window.alert(err);
+                    // });
+                })
+                .catch((err) => {
+                    console.log("error")
+                    console.log(err);
+                });
+        }
+        
         document.getElementById("exitAppBtn").addEventListener("click", function () {
             woff.closeWindow();
         });
@@ -230,6 +263,8 @@
             document.getElementById("sendLocationBtn").addEventListener("click", sendLocationToWOFF);
             document.getElementById("scanQRBtn").addEventListener("click", scanQRCode);
             document.getElementById("sendQRDataBtn").addEventListener("click", sendQRToWOFF);
+            
+            document.getElementById("callAPIBtn").addEventListener("click", callAPI);
         };
     </script>
     <script charset="utf-8" src="https://static.worksmobile.net/static/wm/woff/edge/3.6/sdk.js"></script>
