@@ -204,6 +204,7 @@
                 })
                 .catch((err) => {
                     console.log(err.code, err.message);
+                    woff.login();
                 });
 
             document.getElementById("getLocationBtn").addEventListener("click", getLocation);
