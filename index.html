@@ -189,13 +189,15 @@
                 "password": "ffaRELRNdck^",
             }
             let token = '';
+
+            alert("callAPI()");
             
             axios.post(forguncyURL, forguncyLogin)
                 .then((results) => {
                     console.log(res)
                     token = String(results.data);
 
-                    let msgResult = window.confirm("token: " + token);
+                    alert("token: " + token);
                     
                     // let msg = "登録しました。\n" + "日付: " + date + "\n開始時間: " + startTime + "\n終了時間: " + endTime + "\n訪問先: " + place
                     // // send message
