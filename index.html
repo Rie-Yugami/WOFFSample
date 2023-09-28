@@ -96,7 +96,7 @@
     <div class="container">
         <!-- ユーザープロフィール情報のセクション -->
         <div class="section" id="userProfileSection">
-            <h2>##ユーザーのプロフィール情報</h2>
+            <h2>###ユーザーのプロフィール情報</h2>
             <p>woff.getProfile() メソッドでログイン中のユーザーのプロフィール情報を取得して表示しています。</p>
             <div id="userProfileInfo"></div>
             <button class="btn" id="callAPIBtn">API呼べる？</button>
@@ -239,6 +239,7 @@
           /* エラー処理 */
         }
 
+        /*
         function getUrlParam(param){
             var pageUrl = window.location.search.substring(1);
             var urlVar = pageUrl.split('&');
@@ -248,6 +249,14 @@
                     return decodeURI(paramName[1]);        }
             }
         }
+        */
+
+        function getUrlParam(param){
+            let url = new URL(window.location.href);// URLを取得
+          　let params = url.searchParams;// URLSearchParamsオブジェクトを取得
+            return params.get(param);
+        }
+        
         document.getElementById("exitAppBtn").addEventListener("click", function () {
             woff.closeWindow();
         });
